@@ -14,7 +14,7 @@ const discusses = async () => {
 
         div.className = `bg-amber-50 flex gap-3 rounded-md p-1`;
         div.innerHTML = ` 
-                            <div class="${item.isActive?'avatar online placeholder ':'avatar offline placeholder'}">
+                            <div class="${item.isActive ? 'avatar online placeholder ' : 'avatar offline placeholder'}">
                                 <div class="w-24 rounden-full">
                                     <div class="grid w-32 h-full bg-base-300 place-items-center"><img src=${item.image}alt=""></div>
                                 </div>
@@ -86,3 +86,42 @@ const discusses = async () => {
 
 }
 discusses();
+
+// latest post
+
+const lastPost = async () => {
+    const res = await fetch(' https://openapi.programming-hero.com/api/retro-forum/latest-posts');
+    const data = await res.json();
+    const lastBT= document.getElementById('lastBtnt');
+
+    data.forEach(item1 => {
+        console.log(item1)
+        const div1 = document.createElement('div');
+        div1.className = `card w-80 bg-base-100 shadow-xl space-x-3`;
+        div1.innerHTML = `<figure class="px-5 pt-10">
+        <img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="" class="rounded-xl" />
+      </figure>
+      <div class="card-body ">
+        <div class="flex space-x-1">
+          <img src="./images/Frame9.png" alt="">
+          <p>${item1.author.posted_date?item1.author.posted_date:'Date Not available'}</p>
+        </div>
+        <h1 class="font-bold">${item1.title}</h1>
+        <p>${item1.description}</p>
+        <div class="flex gap-2">
+          <div class="w-16 h-16">
+              <img class="rounded-full" src=${item1.profile_image} alt="">
+          </div>
+          <div>
+              <h1 class="font-bold">${item1.author.name}</h1>
+              <p>${item1.author.designation?item1.author.designation:'Not Given'}</p>
+          </div>
+        </div>
+      </div>`
+        lastBT.appendChild(div1);
+
+    })
+}
+
+
+lastPost();
