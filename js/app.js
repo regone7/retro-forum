@@ -39,7 +39,7 @@ const discusses = async () => {
                                         </div>
                                         <div class="flex">
                                             <img src="./images/Group 18.png" alt="">
-                                            <p>${item.posted_time}</p>
+                                            <p>${item.posted_time} min</p>
                                         </div>
                                     </div>
                                     <div>
@@ -125,7 +125,7 @@ const searchValues = async(serID)=>{
                                         </div>
                                         <div class="flex">
                                             <img src="./images/Group 18.png" alt="">
-                                            <p>${item.posted_time}</p>
+                                            <p>${item.posted_time} min</p>
                                         </div>
                                     </div>
                                     <div>
@@ -149,6 +149,7 @@ const searchValues = async(serID)=>{
 
 const handelSearch =()=>{
     const searchFild=document.getElementById('searchFild');
+    searchFild.innerText=''
     const inputSearched =searchFild.value;
     if(inputSearched){
         searchValues(inputSearched)
