@@ -43,7 +43,7 @@ const discusses = async () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <button  class="btn btn-circle bg-green-300 "><img onclick="getID('${item.category}')" class="w-full " src="./images/email 1.png" alt=""></button>
+                                        <button  class="btn btn-circle bg-green-300 "><img onclick="getID('${item.title.slice(0,27)}','${item.view_count}')" class="w-full " src="./images/email 1.png" alt=""></button>
                                     </div>
                                 </div>
                             </div>`
@@ -57,34 +57,26 @@ const discusses = async () => {
 
 discusses();
 
-let count = -1;
-const getID= async(catID)=>{
-    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${catID}`);
-    const data = await res.json();
-    const alldata1 = data.posts;
-    count++;
-    document.getElementById('counted').innerText = count;
-    console.log(alldata1)
+// title add
 
+const getID = (title,view_count)=>{
+    const array=[title, view_count];
     const msgbtn = document.getElementById('massagebtn');
-    
+    const div1 = document.createElement('div');
+                    div1.className = `bg-white rounded-md p-3 my-3`;
+                    div1.innerHTML = ` <div class="lg:flex ">
+                    <h1 class="font-bold flex flex-col">${array[0]}</h1>
+                    <div class="flex justify-center items-center">
+                        <img src="./images/Group 16.png" alt="">
+                        <p>${array[1]}</p>
+                    </div>
+                </div>`
+                msgbtn.appendChild(div1);
+}
 
-    alldata1.forEach(item1 =>{
-                const div1 = document.createElement('div');
-                div1.className = `bg-white rounded-md p-3 my-3`;
-                div1.innerHTML = ` <div class="lg:flex ">
-                <h1 class="font-bold flex flex-col">${item1.title}</h1>
-                <div class="flex justify-center items-center">
-                    <img src="./images/Group 16.png" alt="">
-                    <p>${item1.view_count}</p>
-                </div>
-            </div>`
-            msgbtn.appendChild(div1);
-    })
-    
- }
+getID();
 
- getID();
+
 
 // search value
 const searchValues = async(serID)=>{
@@ -131,7 +123,7 @@ const searchValues = async(serID)=>{
                                         </div>
                                     </div>
                                     <div>
-                                        <button  class="btn btn-circle bg-green-300 "><img onclick="getID('${item.category}')" class="w-full " src="./images/email 1.png" alt=""></button>
+                                        <button  class="btn btn-circle bg-green-300 "><img onclick="getID('${item.title.slice(0,27)}','${item.view_count}')" class="w-full " src="./images/email 1.png" alt=""></button>
                                     </div>
                                 </div>
                             </div>`
