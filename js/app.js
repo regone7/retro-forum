@@ -58,9 +58,12 @@ const discusses = async () => {
 discusses();
 
 // title add
-
+let count =0;
 const getID = (title,view_count)=>{
     const array=[title, view_count];
+    count++;
+    document.getElementById('counted').innerText = count;
+    
     const msgbtn = document.getElementById('massagebtn');
     const div1 = document.createElement('div');
                     div1.className = `bg-white rounded-md p-3 my-3`;
@@ -74,12 +77,13 @@ const getID = (title,view_count)=>{
                 msgbtn.appendChild(div1);
 }
 
-getID();
+
 
 
 
 // search value
 const searchValues = async(serID)=>{
+    document.getElementById('loadingSpiner').style.display='block';
     const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${serID}`);
     const data = await res.json();
     const alldata = data.posts;
@@ -89,6 +93,8 @@ const searchValues = async(serID)=>{
 
 
     alldata.forEach(item => {
+        setTimeout(()=>{
+        document.getElementById('loadingSpiner').style.display='none' 
 
         const div = document.createElement('div');
 
@@ -128,6 +134,10 @@ const searchValues = async(serID)=>{
                                 </div>
                             </div>`
         discueee.appendChild(div);
+
+    },2000);
+
+
     
     
      });
