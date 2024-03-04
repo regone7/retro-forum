@@ -5,10 +5,10 @@ const discusses = async () => {
     const data = await res.json();
     const alldata = data.posts;
     const discueee = document.getElementById('discuss');
+    const msgbtn = document.getElementById('massagebtn');
 
 
     alldata.forEach(item => {
-        console.log(item)
 
         const div = document.createElement('div');
 
@@ -43,7 +43,7 @@ const discusses = async () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <button class="btn btn-circle bg-green-300 massage"><img  class="w-full " src="./images/email 1.png" alt=""></button>
+                                        <button class="btn btn-circle bg-green-300 "><img  class="w-full massage" src="./images/email 1.png" alt=""></button>
                                     </div>
                                 </div>
                             </div>`
@@ -51,12 +51,13 @@ const discusses = async () => {
 
 
 
-        // title show
+        //title show
         const allbtn = document.getElementsByClassName('massage');
 
         let count = 0;
 
-        const msgbtn = document.getElementById('massagebtn');
+       
+        
 
         for (const btnt of allbtn) {
             btnt.addEventListener('click', function () {
@@ -64,7 +65,7 @@ const discusses = async () => {
                 count++;
                 document.getElementById('counted').innerText = count;
                 const div1 = document.createElement('div');
-                div1.className = `bg-white rounded-md p-3`;
+                div1.className = `bg-white rounded-md p-3 my-3`;
                 div1.innerHTML = ` <div class="lg:flex ">
                 <h1 class="font-bold flex flex-col">${item.title}</h1>
                 <div class="flex justify-center items-center">
@@ -72,20 +73,43 @@ const discusses = async () => {
                     <p>${item.view_count}</p>
                 </div>
             </div>`
-
+                
                 msgbtn.appendChild(div1);
+                
 
             })
         }
+           
+        
+        
+    
 
 
-    });
+
+
+
+    
+     });
 
 
 
 
 }
+
 discusses();
+
+
+// handel search button
+// const handelSearch =()=>{
+//     const searchFild=document.getElementById('searchFild');
+//     const inputSearched =searchFild.value;
+//     if(inputSearched){
+        
+//     }
+//     else{
+//         alert('please enter valid catagory')
+//     }
+// }
 
 // latest post
 
@@ -99,12 +123,12 @@ const lastPost = async () => {
         const div1 = document.createElement('div');
         div1.className = `card w-80 bg-base-100 shadow-xl space-x-3`;
         div1.innerHTML = `<figure class="px-5 pt-10">
-        <img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="" class="rounded-xl" />
+        <img src=${item1.cover_image} alt="" class="rounded-xl" />
       </figure>
       <div class="card-body ">
         <div class="flex space-x-1">
           <img src="./images/Frame9.png" alt="">
-          <p>${item1.author.posted_date?item1.author.posted_date:'Date Not available'}</p>
+          <p>${item1.author.posted_date?item1.author.posted_date:'No Publish Data'}</p>
         </div>
         <h1 class="font-bold">${item1.title}</h1>
         <p>${item1.description}</p>
@@ -114,7 +138,7 @@ const lastPost = async () => {
           </div>
           <div>
               <h1 class="font-bold">${item1.author.name}</h1>
-              <p>${item1.author.designation?item1.author.designation:'Not Given'}</p>
+              <p>${item1.author.designation?item1.author.designation:'Unknown'}</p>
           </div>
         </div>
       </div>`
