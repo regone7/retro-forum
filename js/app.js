@@ -149,7 +149,6 @@ const searchValues = async(serID)=>{
 
 const handelSearch =()=>{
     const searchFild=document.getElementById('searchFild');
-    searchFild.innerText=''
     const inputSearched =searchFild.value;
     if(inputSearched){
         searchValues(inputSearched)
