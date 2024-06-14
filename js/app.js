@@ -14,7 +14,7 @@ const discusses = async () => {
 
         div.className = `bg-amber-50 flex gap-3 rounded-md p-1`;
         div.innerHTML = ` 
-                            <div class="${item.isActive ? 'avatar online placeholder ' : 'avatar offline placeholder'}">
+                            <div class="${item.isActive ? 'avatar online placeholder ' : 'avatar offline placeholder '}">
                                 <div class="w-24 rounden-full">
                                     <div class="grid w-32 h-full bg-base-300 place-items-center"><img src=${item.image}alt=""></div>
                                 </div>
@@ -43,7 +43,7 @@ const discusses = async () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <button  class="btn btn-circle bg-green-300 "><img onclick="getID('${item.title.slice(0,27)}','${item.view_count}')" class="w-full " src="./images/email 1.png" alt=""></button>
+                                        <button  class=" btn btn-circle bg-green-300 "><img onclick="getID('${item.title.slice(0,27)}','${item.view_count}')" class="w-full " src="./images/email 1.png" alt=""></button>
                                     </div>
                                 </div>
                             </div>`
@@ -100,7 +100,7 @@ const searchValues = async(serID)=>{
 
         div.className = `bg-amber-50 flex gap-3 rounded-md p-1`;
         div.innerHTML = ` 
-                            <div class="${item.isActive ? 'avatar online placeholder ' : 'avatar offline placeholder'}">
+                            <div class="${item.isActive ? 'avatar online placeholder ' :  'avatar offline placeholder '}">
                                 <div class="w-24 rounden-full">
                                     <div class="grid w-32 h-full bg-base-300 place-items-center"><img src=${item.image}alt=""></div>
                                 </div>
